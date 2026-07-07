@@ -74,6 +74,10 @@ Monitor and automatic security updates. Screenshots are stored in
 `~/Screenshots`. Review `macos-defaults.sh` before running the bootstrap if you
 prefer different values, and see `docs/MANUAL_STEPS.md` for settings that remain
 manual.
+
+If macOS protects Mail, Safari or Archive Utility preferences, the bootstrap
+prints a warning and `docs/MANUAL_STEPS.md` provides the corresponding UI path
+or safe manual command.
 The window corner radius is set to the classic AppKit-style value `10`. To
 restore the macOS default, run `defaults delete -g NSConvolutionOverride1` and
 restart Finder and any open applications.

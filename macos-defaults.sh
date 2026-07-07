@@ -112,13 +112,13 @@ defaults write com.apple.TextEdit RichText -int 0
 defaults write com.apple.TextEdit PlainTextEncoding -int 4
 defaults write com.apple.TextEdit PlainTextEncodingForWrite -int 4
 defaults write com.apple.mail AddressesIncludeNameOnPasteboard -bool false 2>/dev/null ||
-	echo "Warning: Mail preferences are protected; skipping Mail defaults."
+	echo "Warning: Mail preferences are protected; see docs/MANUAL_STEPS.md#protected-app-preferences."
 defaults write com.apple.Terminal SecureKeyboardEntry -bool true
 defaults write com.apple.Terminal ShowLineMarks -int 0
 
 # Safari
 defaults write com.apple.Safari IncludeDevelopMenu -bool true 2>/dev/null ||
-	echo "Warning: Safari preferences are protected; skipping Develop menu default."
+	echo "Warning: Safari preferences are protected; configure Safari manually as described in docs/MANUAL_STEPS.md."
 defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool true 2>/dev/null || true
 defaults write com.apple.Safari ShowFullURLInSmartSearchField -bool true 2>/dev/null || true
 defaults write com.apple.Safari AutoOpenSafeDownloads -bool false 2>/dev/null || true
@@ -143,7 +143,7 @@ defaults write com.apple.CrashReporter DialogType -string "developer"
 
 # Archive Utility: move successfully extracted source archives to the Trash.
 defaults write com.apple.archiveutility dearchive-move-after -string "$HOME/.Trash" 2>/dev/null ||
-	echo "Warning: Archive Utility preferences are protected; skipping archive cleanup default."
+	echo "Warning: Archive Utility preferences are protected; configure it manually as described in docs/MANUAL_STEPS.md."
 
 # Optional: do not reveal extracted items automatically after unpacking.
 # defaults write com.apple.archiveutility dearchive-open-after -bool false
