@@ -1,4 +1,14 @@
 command -v zoxide >/dev/null && eval "$(zoxide init zsh)"
+
+export NVM_DIR="${NVM_DIR:-$HOME/.nvm}"
+NVM_SCRIPT="$NVM_DIR/nvm.sh"
+if command -v brew >/dev/null; then
+  BREW_NVM_SCRIPT="$(brew --prefix nvm 2>/dev/null)/nvm.sh"
+  [[ -s "$BREW_NVM_SCRIPT" ]] && NVM_SCRIPT="$BREW_NVM_SCRIPT"
+fi
+[[ -s "$NVM_SCRIPT" ]] && source "$NVM_SCRIPT"
+unset NVM_SCRIPT BREW_NVM_SCRIPT
+
 # Optional; enable together with the commented direnv entry in the Brewfile.
 # command -v direnv >/dev/null && eval "$(direnv hook zsh)"
 

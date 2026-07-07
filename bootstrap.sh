@@ -5,50 +5,50 @@ set -euo pipefail
 REPO_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 BREWFILE="$REPO_DIR/Brewfile"
 # Optional external dotfiles repository. Replace the placeholder before use.
+# shellcheck disable=SC2034
 DOTFILES_REPO="https://github.com/DEIN_GITHUB_USERNAME/dotfiles.git"
 
 # Install Xcode Command Line Tools if not already installed
 if ! xcode-select -p &>/dev/null; then
-  echo "Installing Xcode Command Line Tools..."
-  xcode-select --install
-  until xcode-select -p &>/dev/null; do
-    sleep 5
-  done
+	echo "Installing Xcode Command Line Tools..."
+	xcode-select --install
+	until xcode-select -p &>/dev/null; do
+		sleep 5
+	done
 fi
 
 # Rosetta is still needed by a few Intel-only applications on Apple Silicon.
 if [[ "$(uname -m)" == "arm64" ]] && ! /usr/bin/pgrep oahd &>/dev/null; then
-  echo "Installing Rosetta 2..."
-  sudo /usr/sbin/softwareupdate --install-rosetta --agree-to-license
+	echo "Installing Rosetta 2..."
+	sudo /usr/sbin/softwareupdate --install-rosetta --agree-to-license
 fi
 
 # Install Homebrew if not already installed
 if ! command -v brew &>/dev/null; then
-  echo "Installing Homebrew..."
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+	echo "Installing Homebrew..."
+	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
-
 
 # Homebrew lives in different locations on Apple Silicon and Intel Macs.
 if [[ -x /opt/homebrew/bin/brew ]]; then
-  eval "$(/opt/homebrew/bin/brew shellenv)"
+	eval "$(/opt/homebrew/bin/brew shellenv)"
 elif [[ -x /usr/local/bin/brew ]]; then
-  eval "$(/usr/local/bin/brew shellenv)"
+	eval "$(/usr/local/bin/brew shellenv)"
 fi
 
 BREW_CELLAR="$(brew --cellar)"
 if [[ ! -w "$BREW_CELLAR" ]]; then
-  echo "Homebrew Cellar is not writable: $BREW_CELLAR" >&2
-  echo "Repair its ownership before running this bootstrap again." >&2
-  exit 1
+	echo "Homebrew Cellar is not writable: $BREW_CELLAR" >&2
+	echo "Repair its ownership before running this bootstrap again." >&2
+	exit 1
 fi
 
 # Install applications via Brewfile
 if [[ -f "$BREWFILE" ]]; then
-  echo "Installing applications from Brewfile..."
-  brew bundle --file="$BREWFILE" --no-lock
+	echo "Installing applications from Brewfile..."
+	brew bundle --file="$BREWFILE"
 else
-  echo "Warning: Brewfile not found in current directory"
+	echo "Warning: Brewfile not found in current directory"
 fi
 
 # Use GNU Stow to symlink dotfiles
@@ -74,10 +74,10 @@ stow --restow --target="$HOME" --dir="$REPO_DIR/dotfiles" zsh ghostty
 export NVM_DIR="$HOME/.nvm"
 mkdir -p "$NVM_DIR"
 if [[ -s "$(brew --prefix nvm)/nvm.sh" ]]; then
-  # shellcheck disable=SC1090
-  source "$(brew --prefix nvm)/nvm.sh"
-  nvm install --lts
-  nvm alias default 'lts/*'
+	# shellcheck disable=SC1090,SC1091
+	source "$(brew --prefix nvm)/nvm.sh"
+	nvm install --lts
+	nvm alias default 'lts/*'
 fi
 
 echo "Applying macOS preferences..."

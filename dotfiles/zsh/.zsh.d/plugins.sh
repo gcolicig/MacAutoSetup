@@ -1,4 +1,11 @@
 # Antidote compiles the declarative plugin list into one fast source file.
+export ZSH_CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/zsh"
+mkdir -p "$ZSH_CACHE_DIR/completions"
+zstyle ':omz:plugins:docker' completion-file "$ZSH_CACHE_DIR/completions/_docker"
+
+autoload -Uz compinit
+compinit
+
 ANTIDOTE_SCRIPT=""
 if command -v brew >/dev/null; then
   ANTIDOTE_SCRIPT="$(brew --prefix antidote 2>/dev/null)/share/antidote/antidote.zsh"
@@ -21,6 +28,3 @@ if [[ -r "$ANTIDOTE_SCRIPT" ]]; then
     [[ "$IS_MAC" == true ]] && print 'ohmyzsh/ohmyzsh path:plugins/macos' >> "$ANTIDOTE_PLUGIN_FILE"
     antidote load "$ANTIDOTE_PLUGIN_FILE"
 fi
-
-autoload -Uz compinit
-compinit

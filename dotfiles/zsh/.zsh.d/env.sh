@@ -29,8 +29,10 @@ done
 if command -v brew >/dev/null; then
   COREUTILS_GNUBIN="$(brew --prefix coreutils 2>/dev/null)/libexec/gnubin"
   FINDUTILS_GNUBIN="$(brew --prefix findutils 2>/dev/null)/libexec/gnubin"
+  RUSTUP_BIN="$(brew --prefix rustup 2>/dev/null)/bin"
   [[ -d "$COREUTILS_GNUBIN" ]] && path=("$COREUTILS_GNUBIN" $path)
   [[ -d "$FINDUTILS_GNUBIN" ]] && path=("$FINDUTILS_GNUBIN" $path)
+  [[ -d "$RUSTUP_BIN" ]] && path=("$RUSTUP_BIN" $path)
 fi
 
 typeset -U path PATH

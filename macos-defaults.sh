@@ -46,9 +46,9 @@ defaults write com.apple.finder ShowTabView -bool true
 defaults write com.apple.finder FinderSpawnTab -bool true
 defaults write com.apple.finder FXRemoveOldTrashItems -bool true
 defaults write com.apple.finder FXInfoPanesExpanded -dict \
-  General -bool true \
-  OpenWith -bool true \
-  Privileges -bool true
+	General -bool true \
+	OpenWith -bool true \
+	Privileges -bool true
 
 # Optional: allow Finder to be quit like a regular application.
 # defaults write com.apple.finder QuitMenuItem -bool true
@@ -111,15 +111,17 @@ defaults write com.apple.NetworkBrowser BrowseAllInterfaces -bool true
 defaults write com.apple.TextEdit RichText -int 0
 defaults write com.apple.TextEdit PlainTextEncoding -int 4
 defaults write com.apple.TextEdit PlainTextEncodingForWrite -int 4
-defaults write com.apple.mail AddressesIncludeNameOnPasteboard -bool false
+defaults write com.apple.mail AddressesIncludeNameOnPasteboard -bool false 2>/dev/null ||
+	echo "Warning: Mail preferences are protected; skipping Mail defaults."
 defaults write com.apple.Terminal SecureKeyboardEntry -bool true
 defaults write com.apple.Terminal ShowLineMarks -int 0
 
 # Safari
-defaults write com.apple.Safari IncludeDevelopMenu -bool true
-defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool true
-defaults write com.apple.Safari ShowFullURLInSmartSearchField -bool true
-defaults write com.apple.Safari AutoOpenSafeDownloads -bool false
+defaults write com.apple.Safari IncludeDevelopMenu -bool true 2>/dev/null ||
+	echo "Warning: Safari preferences are protected; skipping Develop menu default."
+defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool true 2>/dev/null || true
+defaults write com.apple.Safari ShowFullURLInSmartSearchField -bool true 2>/dev/null || true
+defaults write com.apple.Safari AutoOpenSafeDownloads -bool false 2>/dev/null || true
 
 # Developer tools and Activity Monitor
 defaults write com.apple.dt.Xcode ShowBuildOperationDuration -bool true
@@ -140,7 +142,8 @@ defaults write com.apple.DiskUtility advanced-image-options -bool true
 defaults write com.apple.CrashReporter DialogType -string "developer"
 
 # Archive Utility: move successfully extracted source archives to the Trash.
-defaults write com.apple.archiveutility dearchive-move-after -string "$HOME/.Trash"
+defaults write com.apple.archiveutility dearchive-move-after -string "$HOME/.Trash" 2>/dev/null ||
+	echo "Warning: Archive Utility preferences are protected; skipping archive cleanup default."
 
 # Optional: do not reveal extracted items automatically after unpacking.
 # defaults write com.apple.archiveutility dearchive-open-after -bool false
