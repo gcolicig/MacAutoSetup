@@ -9,6 +9,12 @@ fi
 [[ -s "$NVM_SCRIPT" ]] && source "$NVM_SCRIPT"
 unset NVM_SCRIPT BREW_NVM_SCRIPT
 
+if command -v starship >/dev/null && [[ "${TERM:-dumb}" != "dumb" ]]; then
+  eval "$(starship init zsh)"
+else
+  PROMPT='%F{cyan}%n%f@%F{green}%m%f %F{blue}%~%f %# '
+fi
+
 # Optional; enable together with the commented direnv entry in the Brewfile.
 # command -v direnv >/dev/null && eval "$(direnv hook zsh)"
 
@@ -30,7 +36,7 @@ check_missing_tools() {
   local tool package
   local -A wanted=(
     rg ripgrep fd fd fzf fzf zoxide zoxide eza eza bat bat
-    gh gh lazygit lazygit jq jq stow stow
+    gh gh lazygit lazygit jq jq stow stow starship starship
   )
   for tool package in ${(kv)wanted}; do
     if ! (( $+commands[$tool] )); then

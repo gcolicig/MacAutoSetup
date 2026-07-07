@@ -5,6 +5,7 @@ A lean, modern and terminal-focused development environment for macOS.
 ## ✨ Core Features
 
 - 🚀 Zsh with Antidote — plugin manager for a clean, fast shell
+- ✨ Starship — portable prompt with Nerd Font symbols
 - 🧑‍💻 Zed — fast native editor for macOS
 - 🧘 Minimal Vim config — if you want to keep it light
 - 🖋️ GNU Stow — simple, modular dotfile management

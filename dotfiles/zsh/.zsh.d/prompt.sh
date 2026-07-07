@@ -8,7 +8,7 @@ show_tool_guide() {
   print -P "${C}│${R} ${Y}Data${R}        jq (JSON) · sed/gsed · awk/gawk · find/gfind"
   print -P "${C}│${R} ${Y}System${R}      htop · stow · todo.sh"
   print -P "${C}│${R} ${Y}Development${R} python · pipx · nvm/Node LTS · hf · zed"
-  print -P "${C}│${R} ${Y}Shell${R}       Antidote plugins · Ghostty · Nerd Font"
+  print -P "${C}│${R} ${Y}Shell${R}       Starship prompt · Antidote plugins · Ghostty · Nerd Font"
   print -P "${C}│${R} ${Y}Apps${R}        Marta · Zed · Ghostty · Discord"
   print -P "${C}├─ COLIMA → INCUS → DOCKER ───────────────────────────────────────────────┤${R}"
   print -P "${C}│${R} ${Y}Colima${R}      colima start · colima status · colima ssh · colima stop"

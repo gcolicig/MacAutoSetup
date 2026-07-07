@@ -30,6 +30,7 @@ brew "python"
 brew "pipx"
 brew "nvm"
 brew "antidote"
+brew "starship"
 
 # GNU Utilities
 brew "coreutils"
