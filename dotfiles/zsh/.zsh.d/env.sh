@@ -2,6 +2,12 @@ export GIT_EDITOR=vim
 export EDITOR=vim
 export VISUAL="$EDITOR"
 
+# Persistent history shared by concurrent Zsh sessions.
+HISTFILE="$HOME/.zsh_history"
+HISTSIZE=10000
+SAVEHIST=10000
+setopt HIST_IGNORE_ALL_DUPS SHARE_HISTORY EXTENDED_HISTORY NO_NOMATCH
+
 # Shared macOS/Linux detection for the remaining shell configuration.
 export IS_MAC=false IS_LINUX=false IS_WSL=false
 [[ "$OSTYPE" == darwin* ]] && export IS_MAC=true

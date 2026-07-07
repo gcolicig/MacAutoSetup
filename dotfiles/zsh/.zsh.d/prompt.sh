@@ -17,7 +17,7 @@ show_tool_guide() {
   print -P "${C}│${R} ${Y}Docker${R}      docker ps · docker logs <name> · docker compose up -d/down"
   print -P "${C}│${R} ${Y}Nested${R}      colima ssh -- incus exec <container> -- docker ps"
   print -P "${C}├──────────────────────────────────────────────────────────────────────────┤${R}"
-  print -P "${C}│${R} ${G}Aliases${R}     db (DB index) · todo/t · ta · td · tl · tp · te"
+  print -P "${C}│${R} ${G}Aliases${R}     db · todo/t · ta/td/tl/tp/te · cst/csp/cstt (Colima)"
   print -P "${C}│${R} ${M}GNU note${R}    find is GNU find; fd is simpler, but uses different options"
   print -P "${C}│${R} ${W}Help${R}        guide shows this overview again"
   print -P "${C}└──────────────────────────────────────────────────────────────────────────┘${R}\n"

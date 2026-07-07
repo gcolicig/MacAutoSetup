@@ -28,3 +28,9 @@ if command -v todo.sh >/dev/null; then
   alias tl='todo.sh list'
   alias tp='todo.sh pri'
 fi
+
+if command -v colima >/dev/null; then
+  alias cst='colima start'
+  alias csp='colima stop'
+  alias cstt='colima status'
+fi
