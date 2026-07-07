@@ -23,8 +23,15 @@ fi
 if ! command -v brew &> /dev/null; then
   echo "🍺 Installing Homebrew..."
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-  echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> "$HOME/.zprofile"
+fi
+
+if [[ -x /opt/homebrew/bin/brew ]]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
+elif [[ -x /usr/local/bin/brew ]]; then
+  eval "$(/usr/local/bin/brew shellenv)"
+else
+  echo "Homebrew installation was not found in a standard macOS location." >&2
+  exit 1
 fi
 
 # Step 3: Clone the repo if it hasn't been cloned yet

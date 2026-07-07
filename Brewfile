@@ -1,6 +1,3 @@
-tap "nikitabobko/tap" # Aerospace
-tap "jorgerojas26/lazysql" 
-
 # CLI Tools
 brew "git"
 brew "fzf"
@@ -8,23 +5,31 @@ brew "ripgrep"
 brew "bat"
 brew "htop"
 brew "lazygit"
-brew "lazysql"
-brew "awscli"
 brew "jq"
-brew "yq"
 brew "gh"
-brew "delta"
-brew "tmux"
+brew "git-delta"
+# brew "direnv"      # Optional: project-specific environment activation
+brew "zoxide"
+brew "eza"
+brew "fd"
 brew "stow"
-brew "neovim"
-brew "kubectl"       # Kubernetes CLI
-brew "tailscale"     # Secure mesh VPN for homelab and remote access
+# brew "tailscale"   # Optional: secure mesh VPN
+brew "todo-txt"
+brew "hf"           # Hugging Face Hub CLI
+brew "colima"       # Linux VM for the planned Incus host
+brew "shellcheck"
+brew "shfmt"
+
+# Optional tooling retained as documentation:
+# brew "mas"          # Mac App Store command-line interface
+# brew "dockutil"     # Deterministic Dock layout management
+# brew "mise"         # Alternative runtime manager; nvm is active here
 
 # Languages n stuff
 brew "python"
 brew "pipx"
-brew "node"
 brew "nvm"
+brew "antidote"
 
 # GNU Utilities
 brew "coreutils"
@@ -33,19 +38,17 @@ brew "findutils"
 brew "gawk"
 
 # GUI Applications
-cask "iterm2"
-cask "visual-studio-code"
-cask "raycast"
-cask "docker"
+cask "marta"
+cask "zed"
 cask "ghostty"
-cask "aerospace"
-cask "caffeine"
 cask "discord"
-cask "chatgpt"
-cask "shottr"
-cask "caffeine" 
-# cash "zoom" - I don't want to install this by default
+
+# Optional applications retained as documentation:
+# cask "visual-studio-code" # Zed is the active editor
+# cask "obsidian"
+
+# Terax currently has no official Homebrew cask. Install its signed macOS DMG
+# from https://terax.app/ until an official cask becomes available.
 
 # Fonts
 cask "font-jetbrains-mono-nerd-font"
-
